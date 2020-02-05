@@ -1,0 +1,60 @@
+<div>
+    <div class="container">
+        <div class="text-center mt-5">
+            <div class="row">
+                <div class="col-md-4 col-sm-12 mb-5">
+                    <div class="list-group" *ngFor="let item of pagedItems; let i = index">
+                        <a href="#" class="list-group-item list-group-item-action"
+                            (click)="activatedItem(item)">{{ item.Name }}</a>
+                    </div>
+                </div>
+
+                <div class="col-md-8 col-sm-12">
+
+                    <ul class="list-group list-group-flush" *ngIf="activedItem">
+                        <li class="list-group-item list-group-item-action list-group-item-primary">
+                            {{ activedItem.Name }} </li>
+                        <li class="list-group-item list-group-item-action list-group-item-primary">
+                            {{ activedItem.LastName }} </li>
+                        <li class="list-group-item list-group-item-action list-group-item-primary">
+                            {{ activedItem.Edad }} </li>
+                        <li class="list-group-item list-group-item-action list-group-item-primary">
+                            {{ activedItem.Biography }} </li>
+                        <li class="list-group-item list-group-item-action list-group-item-primary">
+                            {{ activedItem.Telefonos }} </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+
+        <hr>
+
+
+        <div class="row justify-content-md-center">
+
+            <div class="col mx-auto">
+                <!-- pagination -->
+                <ul *ngIf="pager.pages && pager.pages.length"
+                    class="pagination pagination-sm mt-5 justify-content-center">
+                    <li [ngClass]="{disabled:pager.currentPage === 1}">
+                        <a class="page-link" href="#" (click)="setPage(pager.currentPage - 1)">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                        <a class="page-link" href="#" (click)="setPage(page)">{{page}}</a>
+                    </li>
+                    <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                        <a class="page-link" href="#" (click)="setPage(pager.currentPage + 1)">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+</div>
